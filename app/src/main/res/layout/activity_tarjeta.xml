@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvmascotas"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="4dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/fotomascota"
+        android:layout_width="match_parent"
+        android:layout_height="197dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="fitXY"
+        android:src="@drawable/perro1" />
+
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_name"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="200dp"/>
+
+    <TextView
+        android:id="@+id/nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="195dp"
+        android:layout_marginStart="150dp"
+        android:text="Name"
+        android:textSize="36sp" />
+
+    <TextView
+        android:id="@+id/contador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="195dp"
+        android:layout_marginStart="310dp"
+        android:text="0"
+        android:textSize="36sp" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/like2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="335dp"
+        android:layout_marginTop="200dp"
+        android:backgroundTint="#FFEB3B"
+        android:src="@drawable/ic_action_name" />
+
+
+</com.google.android.material.card.MaterialCardView>
