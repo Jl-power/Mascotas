@@ -1,5 +1,7 @@
 package com.example.mascotas;
 
+import static android.graphics.Color.parseColor;
+
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -16,22 +18,19 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import java.util.ArrayList;
 
-import static android.graphics.Color.parseColor;
-
-public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaViewHolder> {
+public class MascotagridAdapter extends RecyclerView.Adapter<MascotagridAdapter.MascotaViewHolder> {
     ArrayList<Mascotas> mascotas;
 
-    public MascotaAdapter(ArrayList<Mascotas> m){
+    public MascotagridAdapter(ArrayList<Mascotas> m){
     this.mascotas = m;
     }
 
     @NonNull
     @Override
     public MascotaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_tarjeta,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_tarjetagrid,parent,false);
         return new MascotaViewHolder(v);
     }
 
@@ -40,27 +39,8 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
         Mascotas mascota = mascotas.get(position);
         holder.fotomascota.setImageResource(mascota.getFoto());
         holder.contador.setText(String.valueOf(mascota.getContador()));
-        holder.nombre.setText(mascota.getNombre());
         holder.like2.setBackgroundColor(parseColor("#FFEB3B"));
-        holder.like.setImageResource(R.drawable.ic_action_name);
-        holder.like.setOnClickListener(view -> {
-            final Dialog dialog =new Dialog(view.getContext());
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setContentView(R.layout.rating);
-            dialog.show();
-            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-            dialog.getWindow().setGravity(Gravity.CENTER);
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-       RatingBar ratingBar = dialog.findViewById(R.id.ratingBar);
-
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                holder.contador.setText(String.valueOf((int)rating));
-            }
-        });
-       });
     }
 
     @Override
@@ -71,17 +51,15 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
     public static class MascotaViewHolder extends RecyclerView.ViewHolder{
 
         private final AppCompatImageView fotomascota;
-        private final AppCompatImageButton like,like2;
-        private final TextView contador,nombre;
+        private final AppCompatImageButton like2;
+        private final TextView contador;
 
 
         public MascotaViewHolder(@NonNull View itemView) {
             super(itemView);
             fotomascota = itemView.findViewById(R.id.fotomascota);
-            like = itemView.findViewById(R.id.like);
             like2 = itemView.findViewById(R.id.like2);
             contador = itemView.findViewById(R.id.contador);
-            nombre = itemView.findViewById(R.id.nombre);
         }
     }
 }

@@ -3,10 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/NOGA/AndroidStudioProjects/Mascotas2/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/NOGA/AndroidStudioProjects/Mascotas2/app/src/main/res/layout/activity_acercade.xml" value="0.2" />
+        <entry key="..\:/Users/NOGA/AndroidStudioProjects/Mascotas2/app/src/main/res/layout/activity_contacto.xml" value="0.1" />
+        <entry key="..\:/Users/NOGA/AndroidStudioProjects/Mascotas2/app/src/main/res/layout/activity_main.xml" value="0.15" />
         <entry key="..\:/Users/NOGA/AndroidStudioProjects/Mascotas2/app/src/main/res/layout/activity_main2.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/NOGA/AndroidStudioProjects/Mascotas2/app/src/main/res/layout/activity_tarjeta.xml" value="0.25" />
+        <entry key="..\:/Users/NOGA/AndroidStudioProjects/Mascotas2/app/src/main/res/layout/activity_tarjeta.xml" value="0.33" />
+        <entry key="..\:/Users/NOGA/AndroidStudioProjects/Mascotas2/app/src/main/res/layout/activity_tarjetagrid.xml" value="0.22" />
+        <entry key="..\:/Users/NOGA/AndroidStudioProjects/Mascotas2/app/src/main/res/layout/content_contacto.xml" value="0.14" />
+        <entry key="..\:/Users/NOGA/AndroidStudioProjects/Mascotas2/app/src/main/res/layout/fragment_home.xml" value="0.12" />
+        <entry key="..\:/Users/NOGA/AndroidStudioProjects/Mascotas2/app/src/main/res/layout/fragment_perfil.xml" value="0.12466001813236627" />
         <entry key="..\:/Users/NOGA/AndroidStudioProjects/Mascotas2/app/src/main/res/layout/rating.xml" value="0.25" />
+        <entry key="..\:/Users/NOGA/AndroidStudioProjects/Mascotas2/app/src/main/res/menu/menu_toolbar.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

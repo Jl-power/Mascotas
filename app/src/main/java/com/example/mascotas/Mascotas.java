@@ -4,7 +4,11 @@ public class Mascotas {
     private String nombre;
     private int foto,rating=0;
 
+    public Mascotas(int foto, int rating){
+        this.foto = foto;
+        this.rating = rating;
 
+    }
 
     public Mascotas(String nombre, int foto) {
         this.nombre = nombre;

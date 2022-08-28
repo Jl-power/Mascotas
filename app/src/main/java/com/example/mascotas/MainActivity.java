@@ -1,70 +1,102 @@
 package com.example.mascotas;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Mascotas> mascotas;
-    private RecyclerView listamascotas;
+
     private Toolbar toolbar;
-    private ImageView imageView,imageView2, imageView3;
-    private TextView titulo;
-    private FloatingActionButton boton;
+    private ImageView imageView3;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listamascotas = findViewById(R.id.rvmascotas2);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        listamascotas.setLayoutManager(llm);
+        tabLayout = findViewById(R.id.tabhome);
+        viewPager = findViewById(R.id.viewpagermain);
 
-
-        toolbar = findViewById(R.id.toolbar2);
+        toolbar = findViewById(R.id.toolbarcontacto);
         setSupportActionBar(toolbar);
 
-        imageView = findViewById(R.id.icono1);
-        titulo = findViewById(R.id.titulo);
-        imageView2 = findViewById(R.id.icono2);
-        boton = findViewById(R.id.floatingActionButton);
         imageView3 = findViewById(R.id.icono3);
-
-        iniciarmascotas();
-        iniciaradaptador();
 
         imageView3.setOnClickListener(v -> {
             Intent i = new Intent(this, MainActivity2.class);
             startActivity(i);
         });
 
+
+
+
+        if(toolbar != null){
+            setSupportActionBar(toolbar);
+        }
+
+        setupViewPager();
+
+
     }
 
-    public void iniciaradaptador(){
-        MascotaAdapter ma = new MascotaAdapter(mascotas);
-        listamascotas.setAdapter(ma);
+    private ArrayList<Fragment> agregarFragment(){
+        ArrayList<Fragment> fragments = new ArrayList<>();
+
+        fragments.add(new FragmentHome());
+        fragments.add(new FragmentPerfil());
+
+        return fragments;
     }
 
-    public void iniciarmascotas(){
-        mascotas = new ArrayList<>();
-        mascotas.add(new Mascotas("Cuper",R.drawable.perro1));
-        mascotas.add(new Mascotas("Flex",R.drawable.perro2));
-        mascotas.add(new Mascotas("Moro",R.drawable.perro3));
-        mascotas.add(new Mascotas("Terry",R.drawable.perro4));
-        mascotas.add(new Mascotas("Max",R.drawable.perro5));
-        mascotas.add(new Mascotas("Dory",R.drawable.perro6));
+    public void setupViewPager(){
+        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, agregarFragment()));
+        tabLayout.setupWithViewPager(viewPager);
+
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_page);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent i;
+        switch (item.getItemId()){
+            case R.id.opcion1:
+                i = new Intent(this,Contacto.class);
+                startActivity(i);
+                break;
+            case R.id.opcion2:
+                i = new Intent(this,Acercade.class);
+                startActivity(i);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

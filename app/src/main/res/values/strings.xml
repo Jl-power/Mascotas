@@ -9,4 +9,15 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="menu_opcion1">Contacto</string>
+    <string name="menu_opcion2">Acerca de</string>
+    <string name="title_activity_contacto">Contacto</string>
+
+    <string name="nombre">Nombre</string>
+    <string name="correo">Correo electronico</string>
+    <string name="mensaje">Mensaje</string>
+    <string name="botonmensaje">ENVIAR COMENTARIO</string>
+    <string name="Info">Perez Lucas Sebastian\nDesarrollador Android\nTucuman - Argentina</string>
+    <string name="perro_nombre">Flex</string>
 </resources>

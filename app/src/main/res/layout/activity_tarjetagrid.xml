@@ -26,28 +26,11 @@
             android:src="@drawable/perro1" />
 
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/like"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="200dp"
-            android:src="@drawable/ic_action_name" />
-
-        <TextView
-            android:id="@+id/nombre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="195dp"
-            android:text="Name"
-            android:textSize="36sp" />
-
         <TextView
             android:id="@+id/contador"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="290dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="195dp"
             android:text="0"
             android:textSize="36sp" />
@@ -56,7 +39,7 @@
             android:id="@+id/like2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="315dp"
+            android:layout_marginStart="60dp"
             android:layout_marginTop="200dp"
             android:backgroundTint="#FFEB3B"
             android:src="@drawable/ic_action_name" />

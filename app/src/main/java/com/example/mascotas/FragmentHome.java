@@ -1,41 +1,46 @@
 package com.example.mascotas;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import android.content.Intent;
+import android.os.Bundle;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-public class MainActivity2 extends AppCompatActivity {
-    private Toolbar toolbar;
+public class FragmentHome extends Fragment {
+
+    ArrayList<Mascotas> mascotas;
     private RecyclerView listamascotas;
-    private ArrayList<Mascotas> mascotas;
+
+    public FragmentHome() {
+        // Required empty public constructor
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View v = inflater.inflate(R.layout.fragment_home, container, false);
 
-        toolbar = findViewById(R.id.toolbarcontacto);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(view -> {
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
-        });
-
-        listamascotas = findViewById(R.id.rvmascotas2);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
+        listamascotas = v.findViewById(R.id.rvmascotas2);
+        LinearLayoutManager llm = new LinearLayoutManager(v.getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         listamascotas.setLayoutManager(llm);
 
         iniciarmascotas();
         iniciaradaptador();
 
+        return v;
     }
+
+
+
+
 
     public void iniciaradaptador(){
         MascotaAdapter ma = new MascotaAdapter(mascotas);
@@ -44,6 +49,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     public void iniciarmascotas(){
         mascotas = new ArrayList<>();
+        mascotas.add(new Mascotas("Cuper",R.drawable.perro1));
         mascotas.add(new Mascotas("Flex",R.drawable.perro2));
         mascotas.add(new Mascotas("Moro",R.drawable.perro3));
         mascotas.add(new Mascotas("Terry",R.drawable.perro4));
@@ -51,3 +57,4 @@ public class MainActivity2 extends AppCompatActivity {
         mascotas.add(new Mascotas("Dory",R.drawable.perro6));
     }
 }
+
