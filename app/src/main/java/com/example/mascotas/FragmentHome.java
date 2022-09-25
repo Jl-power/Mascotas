@@ -1,6 +1,6 @@
 package com.example.mascotas;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,12 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.mascotas.db.BaseDatos;
+
 import java.util.ArrayList;
 
 public class FragmentHome extends Fragment {
-
-    ArrayList<Mascotas> mascotas;
+    private ArrayList<Mascotas> mascotas;
     private RecyclerView listamascotas;
+    private BaseDatos db;
 
     public FragmentHome() {
         // Required empty public constructor
@@ -31,30 +33,25 @@ public class FragmentHome extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager(v.getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         listamascotas.setLayoutManager(llm);
+        db = new BaseDatos(v.getContext());
+        db.insertarMascota("Flex",R.drawable.perro1);
+        db.insertarMascota("Moro",R.drawable.perro2);
+        db.insertarMascota("Terry",R.drawable.perro3);
+        db.insertarMascota("Max",R.drawable.perro4);
+        db.insertarMascota("Dori",R.drawable.perro5);
+        db.insertarMascota("Manchas",R.drawable.perro6);
 
-        iniciarmascotas();
-        iniciaradaptador();
+
+        iniciaradaptador(v.getContext());
+
 
         return v;
     }
 
-
-
-
-
-    public void iniciaradaptador(){
-        MascotaAdapter ma = new MascotaAdapter(mascotas);
+    public void iniciaradaptador(Context context){
+        BaseDatos db = new BaseDatos(context);
+        MascotaAdapter ma = new MascotaAdapter(db.obtenerMascotas());
         listamascotas.setAdapter(ma);
-    }
-
-    public void iniciarmascotas(){
-        mascotas = new ArrayList<>();
-        mascotas.add(new Mascotas("Cuper",R.drawable.perro1));
-        mascotas.add(new Mascotas("Flex",R.drawable.perro2));
-        mascotas.add(new Mascotas("Moro",R.drawable.perro3));
-        mascotas.add(new Mascotas("Terry",R.drawable.perro4));
-        mascotas.add(new Mascotas("Max",R.drawable.perro5));
-        mascotas.add(new Mascotas("Dory",R.drawable.perro6));
     }
 }
 

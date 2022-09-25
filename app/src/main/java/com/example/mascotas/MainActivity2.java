@@ -32,7 +32,6 @@ public class MainActivity2 extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         listamascotas.setLayoutManager(llm);
 
-        iniciarmascotas();
         iniciaradaptador();
 
     }
@@ -42,12 +41,5 @@ public class MainActivity2 extends AppCompatActivity {
         listamascotas.setAdapter(ma);
     }
 
-    public void iniciarmascotas(){
-        mascotas = new ArrayList<>();
-        mascotas.add(new Mascotas("Flex",R.drawable.perro2));
-        mascotas.add(new Mascotas("Moro",R.drawable.perro3));
-        mascotas.add(new Mascotas("Terry",R.drawable.perro4));
-        mascotas.add(new Mascotas("Max",R.drawable.perro5));
-        mascotas.add(new Mascotas("Dory",R.drawable.perro6));
-    }
+
 }

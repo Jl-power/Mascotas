@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mascotas.db.BaseDatos;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
@@ -42,13 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
         imageView3 = findViewById(R.id.icono3);
 
-        imageView3.setOnClickListener(v -> {
-            Intent i = new Intent(this, MainActivity2.class);
-            startActivity(i);
-        });
-
-
-
 
         if(toolbar != null){
             setSupportActionBar(toolbar);
@@ -71,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     public void setupViewPager(){
         viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, agregarFragment()));
         tabLayout.setupWithViewPager(viewPager);
-
+        BaseDatos db = new BaseDatos(getApplicationContext());
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_page);
     }

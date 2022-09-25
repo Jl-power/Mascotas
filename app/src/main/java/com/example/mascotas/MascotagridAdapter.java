@@ -3,6 +3,7 @@ package com.example.mascotas;
 import static android.graphics.Color.parseColor;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
@@ -18,11 +19,13 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mascotas.db.BaseDatos;
+
 import java.util.ArrayList;
 
 public class MascotagridAdapter extends RecyclerView.Adapter<MascotagridAdapter.MascotaViewHolder> {
     ArrayList<Mascotas> mascotas;
-
+    Context context;
     public MascotagridAdapter(ArrayList<Mascotas> m){
     this.mascotas = m;
     }
@@ -36,10 +39,14 @@ public class MascotagridAdapter extends RecyclerView.Adapter<MascotagridAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MascotaViewHolder holder, int position) {
+        BaseDatos db = new BaseDatos(holder.fotomascota.getContext());
         Mascotas mascota = mascotas.get(position);
         holder.fotomascota.setImageResource(mascota.getFoto());
-        holder.contador.setText(String.valueOf(mascota.getContador()));
         holder.like2.setBackgroundColor(parseColor("#FFEB3B"));
+        mascota.setRating(db.obtenerRatingMascota(mascota));
+        holder.contador.setText(String.valueOf(mascota.getRating()));
+        db.close();
+
 
     }
 

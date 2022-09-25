@@ -1,5 +1,6 @@
 package com.example.mascotas;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,14 +12,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.mascotas.db.BaseDatos;
+
 import java.util.ArrayList;
 
 
 public class FragmentPerfil extends Fragment {
 
-    ArrayList<Mascotas> mascotas;
+    ArrayList<Mascotas> mascotasFavoritas;
     private RecyclerView listamascotas;
-
+    private BaseDatos db;
     public FragmentPerfil() {
         // Required empty public constructor
     }
@@ -34,28 +37,18 @@ public class FragmentPerfil extends Fragment {
         glm.setOrientation(GridLayoutManager.VERTICAL);
         listamascotas.setLayoutManager(glm);
 
-        iniciarmascotas();
-        iniciaradaptador();
+        db = new BaseDatos(v.getContext());
+
+        iniciaradaptador(v.getContext());
+
 
         return v;
     }
 
-    public void iniciaradaptador(){
-        MascotagridAdapter ma = new MascotagridAdapter(mascotas);
+    public void iniciaradaptador(Context context){
+        MascotagridAdapter ma = new MascotagridAdapter(db.obtenerMascotasFavoritas());
         listamascotas.setAdapter(ma);
     }
 
-    public void iniciarmascotas(){
-        mascotas = new ArrayList<>();
-        mascotas.add(new Mascotas(R.drawable.uno,10));
-        mascotas.add(new Mascotas(R.drawable.dos,6));
-        mascotas.add(new Mascotas(R.drawable.tres,8));
-        mascotas.add(new Mascotas(R.drawable.cuatro,5));
-        mascotas.add(new Mascotas(R.drawable.cinco,0));
-        mascotas.add(new Mascotas(R.drawable.seis,4));
-        mascotas.add(new Mascotas(R.drawable.siete,8));
-        mascotas.add(new Mascotas(R.drawable.ocho,9));
-        mascotas.add(new Mascotas(R.drawable.nueve,9));
 
-    }
 }

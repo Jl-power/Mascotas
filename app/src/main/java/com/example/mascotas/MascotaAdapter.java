@@ -21,6 +21,8 @@ import java.util.ArrayList;
 
 import static android.graphics.Color.parseColor;
 
+import com.example.mascotas.db.BaseDatos;
+
 public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaViewHolder> {
     ArrayList<Mascotas> mascotas;
 
@@ -52,12 +54,20 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
             dialog.getWindow().setGravity(Gravity.CENTER);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
+
+
        RatingBar ratingBar = dialog.findViewById(R.id.ratingBar);
 
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                holder.contador.setText(String.valueOf((int)rating));
+                BaseDatos db = new BaseDatos(view.getContext());
+                mascota.setRating((int)rating);
+                db.insertarRating(mascota);
+                holder.contador.setText(String.valueOf((db.obtenerRatingMascota(mascota))));
+                db.close();
+
+
             }
         });
        });
